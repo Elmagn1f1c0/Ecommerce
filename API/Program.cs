@@ -22,6 +22,7 @@ namespace API
                 opt.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection"));
             });
             builder.Services.AddScoped<IProductRepository, ProductRepository>();
+            builder.Services.AddCors();
 
             var app = builder.Build();
 
@@ -31,6 +32,11 @@ namespace API
                 app.UseSwagger();
                 app.UseSwaggerUI();
             }
+
+            app.UseCors(opt => 
+            {
+                opt.AllowAnyHeader().AllowAnyMethod().WithOrigins("http://localhost:5173");
+            });
 
             app.UseHttpsRedirection();
 
