@@ -9,10 +9,10 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace API.Controllers
 {
-     [Route("api/products")]
-    [ApiController]
-    public class ProductController  : ControllerBase
+	
+	public class ProductController : BaseApiController
     {
+
         private readonly IProductRepository _repo;
         public ProductController(IProductRepository repo)
         {
