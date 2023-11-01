@@ -8,6 +8,7 @@ import NotFound from "../../app/errors/NotFound";
 import { LoadingButton } from "@mui/lab";
 import { useAppDispatch, useAppSelector } from "../../app/store/configureStore";
 import { addBasketItemAsync, removeBasketItemAsync } from "../basket/basketSlice";
+import LoadingComponent from "../../app/layout/LoadingComponent";
 
 export default function ProductDetails() {
     const {basket, status} = useAppSelector(state => state.basket);
@@ -42,7 +43,7 @@ export default function ProductDetails() {
         }
     }
 
-    if (loading) return <h3>Loading...</h3>
+    if (loading) return <LoadingComponent message='Loading product'/>
     if (!product) return <NotFound />
 
     return (
@@ -94,7 +95,7 @@ export default function ProductDetails() {
                     <Grid item xs={6}>
                          <LoadingButton
                          disabled={item?.quantity === quantity || !item && quantity === 0}
-                            loading={status.includes('pendingRemoveItem' + item?.productId)}
+                            loading={status.includes('pending')}
                             onClick={handleUpdateCart}
                             sx={{height: '55px'}}
                             color='primary'

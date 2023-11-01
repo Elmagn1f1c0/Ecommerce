@@ -8,6 +8,7 @@ import { getCookie } from "../util/util";
 import agent from "../api/agent";
 import { useAppDispatch } from "../store/configureStore";
 import { setBasket } from "../../features/basket/basketSlice";
+import LoadingComponent from "./LoadingComponent";
 
 function App() {
   const dispatch = useAppDispatch();
@@ -40,7 +41,7 @@ function App() {
     setDarkMode(!darkMode);
   }
 
-  if (loading) return <h1>Loading...</h1>
+  if (loading) return <LoadingComponent />
 
 
   
