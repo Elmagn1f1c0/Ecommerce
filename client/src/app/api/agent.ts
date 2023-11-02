@@ -1,13 +1,21 @@
 import axios, { AxiosError, AxiosResponse } from "axios";
 import { toast } from "react-toastify";
 import { router } from "../router/Routes";
+import { PaginatedResponse } from "../models/pagination";
 
 axios.defaults.baseURL = 'http://localhost:5000/api/';
 axios.defaults.withCredentials = true;
 
 const responseBody = (response: AxiosResponse) => response.data;
 
-axios.interceptors.response.use(response =>{
+axios.interceptors.response.use(response => {
+    
+
+    const pagination = response.headers['pagination'];
+    if (pagination) {
+        response.data = new PaginatedResponse(response.data, JSON.parse(pagination));
+        return response;
+    }
     return response
 }, (error: AxiosError) => {
     const {data, status} = error.response as AxiosResponse;
@@ -75,3 +83,5 @@ const agent = {
     Basket
 }
 export default agent;
+
+
