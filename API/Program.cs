@@ -1,11 +1,10 @@
 using API.Data;
 using API.Middleware;
-using API.Repository;
 using Microsoft.EntityFrameworkCore;
 
 namespace API
 {
-    public class Program
+	public class Program
     {
         public static void Main(string[] args)
         {
@@ -21,7 +20,7 @@ namespace API
             {
                 opt.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection"));
             });
-            builder.Services.AddScoped<IProductRepository, ProductRepository>();
+           
             builder.Services.AddCors();
 
             var app = builder.Build();

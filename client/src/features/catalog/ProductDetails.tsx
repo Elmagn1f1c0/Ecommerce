@@ -22,7 +22,7 @@ export default function ProductDetails() {
     useEffect(() => {
         if (item) setQuantity(item.quantity);
         id && agent.Catalog.details(parseInt(id))
-            .then(response => setProduct(response.result))
+            .then(response => setProduct(response))
             .catch(error => console.log(error))
             .finally(() => setLoading(false));
     }, [id, item]);
