@@ -20,7 +20,7 @@ namespace API.Data
 
                 var admin = new User
                 {
-                    UserName = "Admin",
+                    UserName = "chibueze",
                     Email = "chibueze@gmail.com"
                 };
 

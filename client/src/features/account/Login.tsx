@@ -26,8 +26,13 @@ export default function Login() {
     })
 
   async function submitForm(data: FieldValues) {
-    await dispatch(signInUser(data));
-    navigate('/catalog');   
+    try {
+        await dispatch(signInUser(data));
+        navigate('/catalog');  
+    } catch (error) {
+        console.log(error);
+    }
+     
   }
 
   return (
@@ -43,11 +48,11 @@ export default function Login() {
             <TextField
               margin="normal"
               fullWidth
-              label="Email Address"
+              label="Username"
               autoFocus
-              {...register('email', {required: 'Email is required'})}
-              error={!!errors.email}
-              helperText={errors?.email?.message as string}
+              {...register('username', {required: 'Username is required'})}
+              error={!!errors.username}
+              helperText={errors?.username?.message as string}
             />
             <TextField
               margin="normal"
@@ -69,7 +74,7 @@ export default function Login() {
             </LoadingButton>
             <Grid container>
               <Grid item>
-                <Link to='/register'>
+                <Link to='/register' style={{textDecoration: 'none'}}>
                   {"Don't have an account? Sign Up"}
                 </Link>
               </Grid>
