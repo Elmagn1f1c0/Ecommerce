@@ -60,7 +60,7 @@ namespace API
                 opt.User.RequireUniqueEmail = true;
                 opt.Password.RequireNonAlphanumeric = true;
             })
-                .AddRoles<IdentityRole>()
+                .AddRoles<Role>()
                 .AddEntityFrameworkStores<StoreContext>();
             builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
             .AddJwtBearer(opt => 
