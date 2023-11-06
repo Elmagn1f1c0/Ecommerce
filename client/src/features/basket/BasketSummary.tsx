@@ -3,7 +3,7 @@ import { currencyFormat } from "../../app/util/util";
 import { useAppSelector } from "../../app/store/configureStore";
 
 export default function BasketSummary() {
-    const {basket} = useAppSelector(state => state.basket);
+    const { basket } = useAppSelector(state => state.basket);
     const subtotal = basket?.items.reduce((sum, item) => sum + (item.quantity * item.price), 0) ?? 0;
     const deliveryFee = subtotal > 1000000 ? 0 : 5000;
 
@@ -26,7 +26,7 @@ export default function BasketSummary() {
                         </TableRow>
                         <TableRow>
                             <TableCell>
-                                <span style={{fontStyle: 'italic'}}>*Orders over #10000 qualify for free delivery</span>
+                                <span style={{ fontStyle: 'italic' }}>*Orders over #10000 qualify for free delivery</span>
                             </TableCell>
                         </TableRow>
                     </TableBody>
