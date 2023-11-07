@@ -31,7 +31,7 @@ export default function BasketSummary({subtotal}: Props) {
                         </TableRow>
                         <TableRow>
                             <TableCell>
-                                <span style={{ fontStyle: 'italic' }}>*Orders over #100 qualify for free delivery</span>
+                                <span style={{ fontStyle: 'italic' }}>*Orders over $100 qualify for free delivery</span>
                             </TableCell>
                         </TableRow>
                     </TableBody>

@@ -39,7 +39,7 @@ export default function BasktTable({ items, isBasket = true }: Props) {
                                     <span>{item.name}</span>
                                 </Box>
                             </TableCell>
-                            <TableCell align="right">#{(item.price / 100).toFixed(2)}</TableCell>
+                            <TableCell align="right">${(item.price / 100).toFixed(2)}</TableCell>
                             <TableCell align="center">
                                 {isBasket &&
                                     <LoadingButton
@@ -54,7 +54,7 @@ export default function BasktTable({ items, isBasket = true }: Props) {
                                         <Add />
                                     </LoadingButton>}
                             </TableCell>
-                            <TableCell align="right">#{((item.price / 100) * item.quantity).toFixed(2)}</TableCell>
+                            <TableCell align="right">${((item.price / 100) * item.quantity).toFixed(2)}</TableCell>
                             {isBasket &&
                                 <TableCell align="right">
                                     <LoadingButton

@@ -76,6 +76,7 @@ namespace API
             });
             builder.Services.AddAuthorization();
             builder.Services.AddScoped<TokenService>();
+            builder.Services.AddScoped<PaymentService>();
 
             var app = builder.Build();
 
