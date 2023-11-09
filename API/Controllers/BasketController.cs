@@ -41,10 +41,8 @@ namespace API.Controllers
 			var product = await _context.Products.FindAsync(productId);
 			if (product == null) return NotFound();
 
-			// add item
 			basket.AddItem(product, quantity);
 
-			// save the changes
 			var result = await _context.SaveChangesAsync() > 0;
 			if (result) return CreatedAtRoute("GetBasket", basket.MapBasketToDto());
 
@@ -54,27 +52,23 @@ namespace API.Controllers
 		[HttpDelete]
 		public async Task<ActionResult> RemoveBasketItem(int productId, int quantity)
 		{
-			// Get basket
 			var basket = await RetrieveBasket(GetBuyerId());
 			if (basket == null) return NotFound();
 
-			// Check if the item exists in the basket
 			var basketItem = basket.Items.FirstOrDefault(item => item.ProductId == productId);
 			if (basketItem == null)
 			{
 				return NotFound("Item not found in the basket");
 			}
 
-			// Check if the quantity to remove is greater than the quantity in the basket
 			if (quantity > basketItem.Quantity)
 			{
 				return BadRequest("Quantity to remove exceeds the available quantity in the basket");
 			}
 
-			// Remove the item or reduce quantity
+			
 			basket.RemoveItem(productId, quantity);
 
-			// Save changes
 			var result = await _context.SaveChangesAsync() > 0;
 			if (result) return Ok();
 
