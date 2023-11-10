@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace API.Migrations
 {
     [DbContext(typeof(StoreContext))]
-    [Migration("20231109201130_First")]
-    partial class First
+    [Migration("20231110041604_PublicId")]
+    partial class PublicId
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -153,6 +153,9 @@ namespace API.Migrations
 
                     b.Property<long>("Price")
                         .HasColumnType("bigint");
+
+                    b.Property<string>("PublicId")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("QuantityInStock")
                         .HasColumnType("int");
